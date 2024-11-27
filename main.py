@@ -3,7 +3,7 @@ import asyncio
 import datetime
 from netschoolapi import NetSchoolAPI
 import collections
-
+import os
 
 app = Flask(__name__)
 
@@ -29,10 +29,12 @@ day_names = ["Понедельник", "Вторник", "Среда", "Четв
 async def fetch_lessons():
     # Проверяем, есть ли сохраненная сессия
     ns = NetSchoolAPI('https://sgo.edu-74.ru/')
+    username = os.getenv("USERNAME")
+    password = os.getenv("PASSWORD")
 
     await ns.login(
-        'ЛошкаревЛ',
-        'cetavale79',
+        username,
+        password,
         'МОУ "СОШ №13"',
     )
 
