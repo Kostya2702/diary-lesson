@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание уроков</title>
+</head>
+<body>
+    <h1>Расписание уроков от Левочки деточки</h1>
+    
+    {% for weekday, lessons in lessons_by_weekday.items() %}
+    <h2>{{weekday}}</h2>
+    <table border="1">
+        <!-- <thead> -->
+            <tr>
+                <th>День</th>
+                <th>Начало урока</th>
+                <th>Конец урока</th>
+                <th>Кабинет №</th>
+                <th>Урок №</th>
+                <th>Предмет</th>
+            </tr>
+        <!-- </thead> -->
+        <tbody>
+            {% for lesson in lessons %}
+            <tr>
+                <td>{{ lesson.day }}</td>
+                <td>{{ lesson.start }}</td>
+                <td>{{ lesson.end }}</td>
+                <td>{{ lesson.room }}</td>
+                <td>{{ lesson.number }}</td>
+                <td>{{ lesson.subject }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+</body>
+</html>
